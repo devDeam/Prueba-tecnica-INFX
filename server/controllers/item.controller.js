@@ -18,6 +18,34 @@ const createItem = async (req, res) => {
     }
 }
 
+const searchItem = async (req, res) => {
+    try {
+        const { q } = req.query;
+
+        if (!q) {
+            return res.status(400).json({ message: "Falta el parámetro de búsqueda 'q'" });
+        }
+
+        const regex = new RegExp(q, 'i'); // 'i' para que no distinga mayúsculas/minúsculas
+
+        const items = await Item.find({
+            $or: [
+                { name: regex },
+                { brand: regex },
+                { category: regex }
+            ]
+        });
+
+        if (items.length === 0) {
+            return res.status(404).json({ message: "No se encontraron resultados" });
+        }
+
+        res.status(200).json(items);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 const getItemById = async (req, res) => {
     try {
         const {id} = req.params;
@@ -63,4 +91,5 @@ module.exports = {
     getItemById,
     updateItem,
     deleteItem,
+    searchItem,
 }
