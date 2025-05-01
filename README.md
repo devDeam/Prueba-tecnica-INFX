@@ -29,6 +29,17 @@ Una API REST construida con **Node.js**, **Express** y **MongoDB**, desplegada g
 .env                // Variables de entorno (solo local)
 ```
 
+
+- **/server**: Contiene la entrada principal del servidor (archivo `index.js`).
+- **/config**: Archivos de configuración, como la conexión a MongoDB (`db.js`).
+- **/controllers**: Archivos que contienen los controladores para manejar las peticiones de la API.
+- **/middleware**: Espacio reservado para agregar middleware en el futuro.
+- **/models**: Modelos de datos, como el archivo `item.model.js` que define la estructura de los ítems en la base de datos.
+- **/routes**: Define las rutas de la API en `item.routes.js`.
+- **.env**: Archivo donde se almacenan las variables de entorno (como la URI de MongoDB, el puerto, etc.).
+- **package.json**: Gestión de dependencias y scripts del proyecto.
+- **README.md**: Documentación del proyecto.
+
 ---
 
 ## 🚀 Cómo Usar Localmente
