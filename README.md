@@ -7,7 +7,7 @@ Una API REST construida con **Node.js**, **Express** y **MongoDB**, desplegada g
 
 ## 🌐 URL en Producción
 
-> 🟢 https://prueba-tecnica-infx.onrender.com
+> 🟢 https://prueba-tecnica-infx.onrender.com/
 
 ---
 
@@ -54,14 +54,14 @@ npm install
 3. Crea un archivo `.env` y agrega tu URI de MongoDB:
 
 ```env
-MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/miapp?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://Admin:Admin123@backenddb.dtbwfds.mongodb.net/INFX-API?retryWrites=true&w=majority&appName=BackendDB
 PORT=3000
 ```
 
 4. Inicia el servidor:
 
 ```bash
-node index.js
+npm run dev
 ```
 
 ---
