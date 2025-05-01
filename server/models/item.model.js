@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Definición del esquema para el modelo de Item
 const ItemSchema = mongoose.Schema(
   {
     brand: {
@@ -42,5 +43,6 @@ const ItemSchema = mongoose.Schema(
   }
 );
 
+// Se crea el modelo Item a partir del esquema definido
 const Item = mongoose.model("Item", ItemSchema);
 module.exports = Item;
