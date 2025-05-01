@@ -30,7 +30,20 @@ Una API REST construida con **Node.js**, **Express** y **MongoDB**, desplegada g
 ```
 
 
-/Prueba-tecnica-INFX │ ├── /server │ └── index.js # Entrada principal del servidor │ ├── /config │ └── db.js # Conexión a MongoDB │ ├── /controllers │ └── item.controller.js # Archivo donde están los controladores de las peticiones API │ ├── /middleware │ └── (vacío por ahora) # Espacio para archivos middleware futuros │ ├── /models │ └── item.model.js # Archivo donde se almacena el modelo para creación de ítems por API │ ├── /routes │ └── item.routes.js # Rutas del recurso "items" │ ├── .env # Variables de entorno (solo local) ├── package.json # Dependencias y scripts del proyecto └── README.md # Documentación del proyecto
+/Prueba-tecnica-INFX │
+├── /server │
+  ├── /config │
+    └── db.js # Conexión a MongoDB │
+  ├── /controllers │
+    └── item.controller.js # Archivo donde están los controladores de las peticiones API │
+  ├── /middleware │
+    └── (vacío por ahora) # Espacio para archivos middleware futuros │
+  ├── /models │
+    └── item.model.js # Archivo donde se almacena el modelo para creación de ítems por API │
+  ├── /routes │
+    └── item.routes.js # Rutas del recurso "items" │
+  └── index.js # Entrada principal del servidor │
+├── .env # Variables de entorno (solo local) ├── package.json # Dependencias y scripts del proyecto └── README.md # Documentación del proyecto
 
 ---
 
