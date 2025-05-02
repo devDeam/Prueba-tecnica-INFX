@@ -34,8 +34,9 @@ const ItemSchema = mongoose.Schema(
       required: true,
     },
     rating: {
-      type: Number,
+      type: [Number],
       required: false,
+      default: [],
     },
   },
   {
