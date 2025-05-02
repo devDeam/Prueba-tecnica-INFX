@@ -4,9 +4,10 @@ const itemRoutes = require("./routes/item.routes.js");
 const connectDB = require("./config/db.js");
 const cors = require("cors");
 
+const app = express();
+
 // Configuración de CORS
 app.use(cors());
-const app = express();
 // Middleware para manejar el cuerpo de las peticiones
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
