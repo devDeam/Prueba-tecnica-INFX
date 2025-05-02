@@ -44,7 +44,6 @@ const CreateItem = () => {
         price: values.price,
         imageUrl: values.imageUrl,
         category: values.category,
-        rating: values.rating,
       };
       await createItem(payload);
       message.success("Producto creado con éxito");

@@ -6,7 +6,7 @@ export interface Item {
   category: string;
   brand: string;
   imageUrl: string;
-  rating: number;
+  rating: number[];
 }
 
 export interface ItemPayload {
@@ -17,5 +17,10 @@ export interface ItemPayload {
   price: number;
   imageUrl: string;
   category: string;
-  rating: number;
+  rating?: number[];
+}
+
+export interface ItemCardProps {
+  item: Item;
+  averageRating: number;
 }

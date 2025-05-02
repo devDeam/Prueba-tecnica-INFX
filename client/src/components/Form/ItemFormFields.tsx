@@ -1,4 +1,4 @@
-import { Form, Input, InputNumber, Select, Rate } from 'antd';
+import { Form, Input, InputNumber, Select } from 'antd';
 
 const { TextArea } = Input;
 
@@ -21,17 +21,14 @@ const ItemFormFields = () => (
     </Form.Item>
     <Form.Item name="category" label="Categoría">
       <Select>
-        <Select.Option value="computadores">Computadores</Select.Option>
-        <Select.Option value="celulares">Celulares</Select.Option>
-        <Select.Option value="tablets">Tablets</Select.Option>
+        <Select.Option value="Computadores">Computadores</Select.Option>
+        <Select.Option value="Celulares">Celulares</Select.Option>
+        <Select.Option value="Tablets">Tablets</Select.Option>
       </Select>
     </Form.Item>
     <Form.Item name="imageUrl" label="Imagen URL">
       <Input placeholder="Ingresa la URL de la imagen del producto" />
     </Form.Item >
-    <Form.Item name="rating" label="Puntuación">
-      <Rate />
-    </Form.Item>
   </>
 );
 
