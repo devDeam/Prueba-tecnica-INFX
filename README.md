@@ -7,11 +7,42 @@ Este repositorio contiene una **API REST** y un **frontend** para gestionar prod
 
 ## 🌐 URLs en Producción
 
-
-> 🟢 **API REST**: [https://prueba-tecnica-infx.onrender.com/](https://prueba-tecnica-infx.onrender.com/)
-> 🟢 **Frontend**: [https://mobilestore-smr.onrender.com/](https://mobilestore-smr.onrender.com)
+> 🟢 **API REST**: https://prueba-tecnica-infx.onrender.com/
+> 🟢 **Frontend**: https://mobilestore-smr.onrender.com/
 
 ---
+## 📁 Estructura del Proyecto (FRONTEND)
+
+├── /client │
+
+  ├── /public │
+    └── _redirects # Para poder manejar router en render │
+    └── icon.png # Icono para el index.html │
+
+  ├── /src │
+    ├── /assets │
+      └── (imagenes, iconos, etc) │
+
+    ├── /components │
+      └── (Componentes como Nav, ItemDetail, etc.) │
+
+    ├── /pages │
+      └── (Páginas como Home, SearchResult, etc.) │
+
+    ├── /types │
+      └── (Types como buttons.d.tsx, etc.) │
+
+    ├── /utils │
+      └── (Utils como formatPrice.ts, etc.) │
+
+    ├── App.tsx # Componente principal de la aplicación
+
+    ├── index.tsx # Punto de entrada del frontend
+
+    ├── .env # Variables de entorno locales del frontend
+
+    └── package.json # Dependencias y scripts del frontend
+
 
 ## 📁 Estructura del Proyecto (BACKEND)
 
@@ -34,7 +65,8 @@ Este repositorio contiene una **API REST** y un **frontend** para gestionar prod
 
   ├── index.js # Entrada principal del servidor │
 
-├── .env # Variables de entorno (solo local) ├── package.json # Dependencias y scripts del proyecto └── README.md # Documentación del proyecto
+├── .env # Variables de entorno (solo local) ├── package.json # Dependencias y scripts del proyecto
+└── README.md # Documentación del proyecto
 
 ---
 
