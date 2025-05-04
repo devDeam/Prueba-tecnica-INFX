@@ -71,12 +71,13 @@ Este repositorio contiene una **API REST** y un **frontend** para gestionar prod
 
 ---
 
+
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/devDeam/Prueba-tecnica-INFX.git
    cd Prueba-tecnica-INFX
    ```
-
+   
 2. Ve a la carpeta del backend:
    ```bash
    cd server
