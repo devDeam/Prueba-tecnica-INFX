@@ -2,3 +2,21 @@
   text-align: center;
 }
 
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  .ant-modal {
+    width: 90% !important;  /* Se asegura que el modal ocupe el 90% del ancho en pantallas pequeñas */
+  }
+  .ant-modal-content {
+    padding: 16px;  /* Ajuste de padding para dispositivos móviles */
+  }
+}
+
+/* Para pantallas más pequeñas (móviles) */
+@media (max-width: 480px) {
+  .ant-modal {
+    width: 95% !important;  /* En pantallas muy pequeñas, el modal ocupará un 95% del ancho */
+  }
+}
+
+

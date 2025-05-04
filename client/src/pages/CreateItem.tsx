@@ -29,7 +29,7 @@ const CreateItem = () => {
       setState(false);
       setShow(true);
       throw new Error(error.message || "Error al crear el producto");
-    } 
+    }
   };
 
   const [form] = Form.useForm();
@@ -64,9 +64,9 @@ const CreateItem = () => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <div className="form-container" style={{ maxWidth: 600, width: "100%" }}>
-        <h1>Crear un nuevo producto</h1>
+    <div className="form-container" style={{ display: "flex", justifyContent: "center" }}>
+      <div className="form-content" style={{ maxWidth: 600, width: "100%" }}>
+        <h1 style={{ textAlign: "center" }}>Crear un nuevo producto</h1>
         <Form layout="vertical" form={form}>
           <ProductFormFields />
           <FormButtons onClick={handleCreate} />

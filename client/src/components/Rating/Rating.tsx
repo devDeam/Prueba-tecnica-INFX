@@ -8,6 +8,7 @@ interface RatingProps {
   readonly: boolean;
   itemId?: string;
 }
+
 const Rating = ({ rating, readonly, itemId }: RatingProps) => {
   const [newRate, setNewRate] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,7 +25,7 @@ const Rating = ({ rating, readonly, itemId }: RatingProps) => {
 
   const handleConfirm = async () => {
     if (!itemId || newRate == null) return;
-    
+
     try {
       setLoading(true);
       const response = await fetch(`${import.meta.env.VITE_API_URL}/items/${itemId}/rating`, {
@@ -32,15 +33,15 @@ const Rating = ({ rating, readonly, itemId }: RatingProps) => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({rating: newRate})
+        body: JSON.stringify({ rating: newRate })
       });
 
-      if(!response.ok) {
-        setError(false)
-        setMsg("No se pudo enviar la calificación. ")
+      if (!response.ok) {
+        setError(false);
+        setMsg("No se pudo enviar la calificación.");
       } else {
         setError(true);
-        setMsg("Calificación enviada con éxito. ")
+        setMsg("Calificación enviada con éxito.");
       }
       setIsMsgShow(true);
     } catch (err) {
@@ -55,6 +56,7 @@ const Rating = ({ rating, readonly, itemId }: RatingProps) => {
       }, 3000);
     }
   };
+
   const handleCancel = () => {
     setIsModalVisible(false);
     setNewRate(0);
@@ -76,6 +78,9 @@ const Rating = ({ rating, readonly, itemId }: RatingProps) => {
         okText="Enviar"
         cancelText="Cancelar"
         confirmLoading={loading}
+        width="90%"  // Ajustar el tamaño a un 90% del ancho disponible
+        style={{ maxWidth: "500px", margin: "0 auto" }}  // Ajustamos el maxWidth para pantallas más grandes
+        bodyStyle={{ padding: "20px" }}  // Añadimos padding para mayor comodidad en dispositivos pequeños
       >
         <p>¿Deseas calificar este producto con {newRate} estrellas?</p>
       </Modal>

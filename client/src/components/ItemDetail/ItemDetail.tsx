@@ -1,4 +1,3 @@
-// ItemDetail.tsx
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Item } from "../../types/item.d.tsx";
@@ -20,18 +19,14 @@ const ItemDetail = () => {
       setError(null);
       setLoading(true);
       try {
-        const url = `${import.meta.env.VITE_API_URL}/items/${id}`
-        const fetchData = fetch(url).then(
-          async (res) => {
-            if (!res.ok) {
-              const errData = await res.json();
-              throw new Error(
-                errData.message || "Error al mostrar el producto"
-              );
-            }
-            return res.json();
+        const url = `${import.meta.env.VITE_API_URL}/items/${id}`;
+        const fetchData = fetch(url).then(async (res) => {
+          if (!res.ok) {
+            const errData = await res.json();
+            throw new Error(errData.message || "Error al mostrar el producto");
           }
-        );
+          return res.json();
+        });
 
         const [data] = await Promise.all([fetchData]);
         setItem(data);
@@ -65,59 +60,69 @@ const ItemDetail = () => {
 
   return (
     <div className="item-detail">
-      <Space direction="vertical">
-        <h2>
+      <Space direction="vertical" style={{ width: "100%" }}>
+        <h2 style={{ textAlign: "center" }}>
           {item.brand} {item.name}
         </h2>
         <Card
-          title={
-            <div style={{ position: "relative" }}>
-              <Carousel autoplay arrows>
-                {item.imageUrl.map((url, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      height: 300,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Image
-                      src={url}
-                      width={1000}
-                      height={500}
-                      style={{ objectFit: "contain" }}
-                    />
-                  </div>
-                ))}
-              </Carousel>
-            </div>
-          }
-          style={{ width: 1000 }}
-        >
-          <Description item={item} />
+  title={
+    <div style={{ position: "relative" }}>
+      <Carousel autoplay arrows>
+        {item.imageUrl.map((url, index) => (
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              src={url}
+              style={{
+                width: "100%",  // Ocupa el 100% del ancho disponible
+                maxHeight: "500px",  // Limita la altura máxima, manteniendo la imagen dentro de un rango
+                objectFit: "contain",  // Asegura que la imagen se ajuste sin perder proporción
+              }}
+            />
+          </div>
+        ))}
+      </Carousel>
+    </div>
+  }
+  style={{
+    width: "100%",
+    maxWidth: "1000px",  // Limita el ancho máximo para evitar que se extienda demasiado
+    margin: "0 auto",
+  }}
+>
+  <Description item={item} />
 
-          <div style={{ marginTop: "16px", marginBottom: "16px" }}>
-            <Space
-              style={{ marginTop: "16px", marginBottom: "16px" }}
-              direction="horizontal"
-            >
-              <BackButton label="Volver" type="default" size="large" />
-              <Button type="primary" size="large" disabled={item.stock == 0}>
-                Agregar al carrito
-              </Button>
-            </Space>
-          </div>
-          <div>
-            <p> ¿Ya compraste este equipo? Queremos saber tu calificación</p>
-          </div>
-          <Rating
-            readonly={false}
-            rating={calculateAverageRating(item.rating)}
-            itemId={item._id}
-          />
-        </Card>
+  <div style={{ marginTop: "16px", marginBottom: "16px" }}>
+    <Space
+      style={{
+        width: "100%",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        gap: "16px",
+      }}
+      direction="horizontal"
+    >
+      <BackButton label="Volver" type="default" size="large" />
+      <Button type="primary" size="large" disabled={item.stock == 0}>
+        Agregar al carrito
+      </Button>
+    </Space>
+  </div>
+  <div>
+    <p>¿Ya compraste este equipo? Queremos saber tu calificación</p>
+  </div>
+  <Rating
+    readonly={false}
+    rating={calculateAverageRating(item.rating)}
+    itemId={item._id}
+  />
+</Card>
       </Space>
     </div>
   );
