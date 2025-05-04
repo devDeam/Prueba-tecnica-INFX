@@ -71,57 +71,106 @@ Este repositorio contiene una **API REST** y un **frontend** para gestionar prod
 
 ---
 
-## 🚀 Cómo Usar Localmente
-
 1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/devDeam/Prueba-tecnica-INFX.git
+   cd Prueba-tecnica-INFX
+   ```
 
-```bash
-git clone https://github.com/devDeam/Prueba-tecnica-INFX.git
-cd Prueba-tecnica-INFX
-```
+2. Ve a la carpeta del backend:
+   ```bash
+   cd server
+   ```
 
-2. Instala dependencias:
+3. Instala las dependencias:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm install
-```
+4. Crea un archivo `.env` y agrega tu URI de MongoDB:
+   ```env
+   MONGODB_URI=mongodb+srv://Admin:Admin123@backenddb.dtbwfds.mongodb.net/INFX-API?retryWrites=true&w=majority&appName=BackendDB
+   PORT=3000
+   ```
 
-3. Crea un archivo `.env` y agrega tu URI de MongoDB:
+5. Inicia el servidor:
+   ```bash
+   npm run dev
+   ```
 
-```env
-MONGODB_URI=mongodb+srv://Admin:Admin123@backenddb.dtbwfds.mongodb.net/INFX-API?retryWrites=true&w=majority&appName=BackendDB
-PORT=3000
-```
+### Frontend
 
-4. Inicia el servidor:
+1. Ve a la carpeta del frontend:
+   ```bash
+   cd frontend
+   ```
 
-```bash
-npm run dev
-```
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Crea un archivo `.env` y agrega la URL de tu API:
+   ```env
+   VITE_API_URL=https://prueba-tecnica-infx.onrender.com/api para cosumir PROD
+   VITE_API_URL=https://localhost:3000/api para local
+   ```
+
+4. Inicia el frontend:
+   ```bash
+   npm run dev
+   ```
+
+5. Abre tu navegador en la ruta especificada en tu terminal por VITE
 
 ---
 
-## 📡 Endpoints
+## 📡 Endpoints (API)
 
-| Método | Ruta                   | Descripción                  |
-|--------|------------------------|------------------------------|
-| GET    | `/`                    |Prueba de conexión y principal|
-| POST   | `/create`              | Crear un nuevo ítem          |
-| GET    | `/api/items?q=:query`  | Buscar un item por query     |
-| GET    | `/api/items/:id`       | Buscar item por id           |
+| Método | Ruta                         | Descripción                                    |
+|--------|------------------------------|------------------------------------------------|
+| GET    | `/`                          | Mensaje de bienvenida                          |
+| POST   | `/api/create`                | Crear un nuevo ítem en la base de datos        |
+| GET    | `/api/items?q=:query`        | Buscar productos por nombre, marca o categoría |
+| GET    | `/api/items/:id`             | Obtener un ítem por su ID                      |
+| POST   | `/api/items/:id/rating`      | Agregar una calificación a un producto         |
 
-> Puedes usar [Postman](https://www.postman.com/) o [Insomnia](https://insomnia.rest/) para probar los endpoints.
+> Puedes probar los endpoints usando [Postman](https://www.postman.com/) o [Insomnia](https://insomnia.rest/).
 
 ---
 
 ## ☁️ Despliegue en Render
 
+### Backend (API)
+
 1. Sube el proyecto a GitHub.
-2. Crea una cuenta en [https://render.com](https://render.com).
+2. Crea una cuenta en [Render](https://render.com).
 3. Crea un nuevo **Web Service** desde tu repositorio.
-4. Configura las variables de entorno:
+4. Conecta tu cuenta de GitHub a Render si aún no lo has hecho, y autoriza a Render para acceder a tus repositorios.
+5. En Repository, selecciona el repositorio que contiene tu API.
+6. En Language, selecciona Node.
+7. Branch, la rama actual de tu proyecto
+8. Root Directory: server
+9. En Build Command: npm install
+10. En Start Command: npm run dev
+11. Configura las variables de entorno:
    - `MONGODB_URI` = tu cadena de conexión a MongoDB Atlas.
-5. Render genera una URL pública con tu API.
+12. Render generará una URL pública para tu API.
+
+### Frontend
+
+1. Sube el proyecto a GitHub.
+2. Crea una cuenta en [Render](https://render.com).
+3. Crea un nuevo **Static Site** desde tu repositorio.
+4. Conecta tu cuenta de GitHub a Render si aún no lo has hecho, y autoriza a Render para acceder a tus repositorios.
+5. En Repository, selecciona el repositorio que contiene tu API.
+6. Branch, la rama actual de tu proyecto
+7. Root Directory: client
+8. En Build Command: npm install; npm build
+9. Publish Directory: dist
+10. Configura las variables de entorno:
+   - `MONGODB_URI` = tu cadena de conexión a MongoDB Atlas.
+11. Render generará una URL pública para tu Static Site.
 
 ---
 
