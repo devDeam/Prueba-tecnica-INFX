@@ -20,6 +20,7 @@ Este repositorio contiene una **API REST** y un **frontend** para gestionar prod
     └── icon.png # Icono para el index.html │
 
   ├── /src │
+
     ├── /assets │
       └── (imagenes, iconos, etc) │
 
