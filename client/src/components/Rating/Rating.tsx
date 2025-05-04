@@ -1,6 +1,7 @@
 import { Rate, Modal } from "antd";
 import { useState } from "react";
 import Message from "../Message/Message";
+import { useNavigate } from 'react-router-dom';
 
 interface RatingProps {
   rating?: number;
@@ -14,6 +15,7 @@ const Rating = ({ rating, readonly, itemId }: RatingProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<boolean | null>(null);
   const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
 
   const handleRating = (value: number) => {
     setNewRate(value);
@@ -30,7 +32,7 @@ const Rating = ({ rating, readonly, itemId }: RatingProps) => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({rating: rating})
+        body: JSON.stringify({rating: newRate})
       });
 
       if(!response.ok) {
@@ -49,7 +51,7 @@ const Rating = ({ rating, readonly, itemId }: RatingProps) => {
       setIsModalVisible(false);
       setLoading(false);
       setTimeout(() => {
-        window.location.reload();
+        navigate(0);
       }, 3000);
     }
   };
