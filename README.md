@@ -1,13 +1,15 @@
 ```markdown
-# 📦 API REST de INFX
+# 📦 INFX - API y Frontend
 
-Una API REST construida con **Node.js**, **Express** y **MongoDB**, desplegada gratuitamente en [Render](https://render.com). Esta API gestiona productos o ítems mediante rutas CRUD básicas.
+Este repositorio contiene una **API REST** y un **frontend** para gestionar productos o ítems, construidos con **Node.js**, **Express**, **MongoDB**, **React**, y **Vite**. Ambos son desplegados gratuitamente en [Render](https://render.com).
 
 ---
 
-## 🌐 URL en Producción
+## 🌐 URLs en Producción
 
-> 🟢 https://prueba-tecnica-infx.onrender.com/
+
+> 🟢 **API REST**: [https://prueba-tecnica-infx.onrender.com/](https://prueba-tecnica-infx.onrender.com/)
+> 🟢 **Frontend**: [https://mobilestore-smr.onrender.com/](https://mobilestore-smr.onrender.com)
 
 ---
 
