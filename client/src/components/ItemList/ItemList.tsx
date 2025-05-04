@@ -8,6 +8,16 @@ import { calculateAverageRating } from "../../utils/calculateAverageRating.ts";
 import { Spin } from "antd";
 import NotFoundPage from "../../pages/NotFound.tsx";
 
+/**
+ * Este componente `ItemList` es responsable de mostrar una lista de productos basados en un término de búsqueda proporcionado en la URL.
+ * Realiza la consulta al API para obtener los productos que coinciden con el término de búsqueda y los agrupa por categorías.
+ *
+ * Muestra un spinner mientras los datos se cargan, y una página de error en caso de que ocurra algún problema con la solicitud o si no se encuentran resultados.
+ * Los productos se muestran en tarjetas utilizando el componente `ItemCard`, y la búsqueda se realiza a través de un parámetro de URL.
+ *
+ * @param {} - No recibe props explícitas, ya que utiliza `useSearchParams` para obtener el parámetro de búsqueda desde la URL.
+ */
+
 const ItemList = () => {
   const [searchParams] = useSearchParams(); // Obtiene los parámetros de búsqueda de la URL
   const query = searchParams.get("search") || ""; // Obtiene el valor del parámetro "search" o una cadena vacía si no existe
@@ -42,7 +52,7 @@ const ItemList = () => {
           setError("Error desconocido");
         }
       } finally {
-        setLoading(false); //  se oculta el spin del fetch
+        setLoading(false); //  se oculta el spin despues del fetch
       }
     };
 
@@ -52,12 +62,12 @@ const ItemList = () => {
   }, [query]);
 
   const groupedByCategory = items.reduce(
-    (acc: Record<string, Item[]>, item) => {
-      if (!acc[item.category]) acc[item.category] = [];
-      acc[item.category].push(item);
-      return acc;
+    (acc: Record<string, Item[]>, item) => {  // La función de reducción toma dos parámetros: el acumulador (acc) y el item actual (item)
+      if (!acc[item.category]) acc[item.category] = []; // Si no existe, se crea un array vacío para esa categoría.
+      acc[item.category].push(item); // Agrega el item actual al array correspondiente a su categoría
+      return acc; //Retornar el acumulador actualizado para la siguiente iteración
     },
-    {}
+    {}  // Valor inicial del acumulador es un objeto vacío, que irá acumulando los items agrupados por categoría.
   );
 
   return (

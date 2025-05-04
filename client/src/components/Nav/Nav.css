@@ -1,34 +1,48 @@
+/* 
+ * Estilo para el encabezado fijo en la parte superior de la pantalla.
+ * Se asegura de que el Header permanezca visible al hacer scroll.
+ */
+ .fixed-header {
+  position: fixed;         /* Fija el elemento en la parte superior */
+  z-index: 1000;           /* Asegura que esté por encima de otros elementos */
+  width: 100%;             /* Ocupa todo el ancho de la pantalla */
+  top: 0;                  /* Se posiciona en la parte superior */
+  display: flex;           /* Utiliza flexbox para alinear el contenido */
+  align-items: center;     /* Centra verticalmente los elementos */
+}
 
-.fixed-header {
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    top: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .fixed-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    background: #001529;
-    color: white;
-    z-index: 1000;
-    padding: 10px 50px;
-  }
-  
-  .page-content {
-    margin-top: 64px;  /* Altura del Header */
-    margin-bottom: 64px; /* Altura del Footer */
-    padding: 24px;
-  }
-  
-  .cart-container {
-    margin-left: auto;
-    margin-right: 24px;
-    display: flex;
-    align-items: center;
-  }
-  
+/* 
+ * Estilo para el pie de página fijo.
+ * Permanece visible en la parte inferior en todo momento.
+ */
+.fixed-footer {
+  position: fixed;         /* Fija el elemento en la parte inferior */
+  bottom: 0;               /* Se posiciona en la parte inferior de la pantalla */
+  width: 100%;             /* Ocupa todo el ancho */
+  text-align: center;      /* Centra el texto horizontalmente */
+  background: #001529;     /* Color de fondo oscuro (tema Ant Design) */
+  color: white;            /* Texto en blanco */
+  z-index: 1000;           /* Se asegura de que esté por encima del contenido */
+  padding: 10px 50px;      /* Espaciado interno */
+}
+
+/* 
+ * Estilo para el contenido principal de la página.
+ * Deja espacio suficiente arriba y abajo para no solaparse con el Header y Footer fijos.
+ */
+.page-content {
+  margin-top: 64px;        /* Deja espacio para el Header (64px es la altura por defecto en Ant Design) */
+  margin-bottom: 64px;     /* Deja espacio para el Footer */
+  padding: 24px;           /* Relleno interno para que el contenido no esté pegado al borde */
+}
+
+/* 
+ * Contenedor del ícono de carrito.
+ * Se alinea a la derecha y se centra verticalmente.
+ */
+.cart-container {
+  margin-left: auto;       /* Empuja el carrito hacia la derecha */
+  margin-right: 24px;      /* Espacio a la derecha */
+  display: flex;           /* Flexbox para alinear contenido */
+  align-items: center;     /* Centrado vertical */
+}

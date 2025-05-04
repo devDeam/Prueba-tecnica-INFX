@@ -1,94 +1,108 @@
+/* Contenedor principal de los resultados de búsqueda */
 .search-results {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .loading,
-  .error,
-  .result-count {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-  }
-  
-  .error {
-    color: red;
-  }
-  
-  .category-group {
-    margin-bottom: 2rem;
-  }
-  
-  .category-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 0.5rem;
-  }
-  
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-  }
-  
-  .item-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    transition: transform 0.2s ease;
-  }
-  
-  .item-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .item-image {
-    width: 70%;
-    height: auto;
-    object-fit: cover;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .item-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 0.3rem;
-  }
-  
-  .item-description {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 0.5rem;
-  }
-  
-  .item-price {
-    font-size: 1rem;
-    color: green;
-    font-weight: bold;
-  }
-  
-  .item-rating,
-  .item-category {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 0.2rem;
-  }
-  
-  .search-bar {
+  padding: 2rem; /* Espacio interno */
+  max-width: 1200px; /* Ancho máximo del contenido */
+  margin: auto; /* Centrado horizontal */
+  font-family: Arial, sans-serif; /* Fuente general */
+}
 
-    border-radius: 5px;
-    overflow: hidden;
-    margin-top: 0.5rem;
-  }
+/* Título principal */
+.title {
+  font-size: 1.5rem; /* Tamaño de fuente grande */
+  font-weight: bold; /* Texto en negrita */
+  margin-bottom: 1rem; /* Espacio debajo del título */
+}
+
+/* Mensajes generales: carga, error, conteo */
+.loading,
+.error,
+.result-count {
+  margin-bottom: 1rem; /* Separación inferior */
+  font-size: 1rem; /* Tamaño de fuente estándar */
+}
+
+/* Estilo específico para mensajes de error */
+.error {
+  color: red; /* Texto rojo para indicar error */
+}
+
+/* Agrupación de ítems por categoría */
+.category-group {
+  margin-bottom: 2rem; /* Espaciado inferior entre grupos */
+}
+
+/* Título de cada categoría */
+.category-title {
+  font-size: 1.25rem; /* Tamaño más grande que el texto normal */
+  font-weight: 600; /* Seminegrita */
+  margin-bottom: 1rem; /* Espacio inferior */
+  border-bottom: 2px solid #ddd; /* Línea inferior decorativa */
+  padding-bottom: 0.5rem; /* Espaciado interno inferior */
+}
+
+/* Contenedor de tarjetas en formato grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Grid responsiva */
+  gap: 1rem; /* Espacio entre tarjetas */
+}
+
+/* Tarjeta individual de producto */
+.item-card {
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 1rem; /* Espacio interno */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: #fff; /* Fondo blanco */
+  transition: transform 0.2s ease; /* Animación suave al hacer hover */
+}
+
+/* Animación al pasar el mouse por la tarjeta */
+.item-card:hover {
+  transform: translateY(-5px); /* Eleva la tarjeta */
+}
+
+/* Imagen dentro de la tarjeta */
+.item-image {
+  width: 70%; /* Escala al 70% del contenedor */
+  height: auto; /* Mantiene proporción */
+  object-fit: cover; /* Ajusta imagen sin deformar */
+  border-top: 1px solid #ddd; /* Línea superior */
+  border-bottom: 1px solid #ddd; /* Línea inferior */
+}
+
+/* Nombre del producto */
+.item-title {
+  font-size: 1.1rem; /* Un poco más grande que el texto normal */
+  font-weight: bold; /* Negrita */
+  margin-bottom: 0.3rem; /* Espacio inferior pequeño */
+}
+
+/* Descripción breve del producto */
+.item-description {
+  font-size: 0.9rem; /* Tamaño reducido */
+  color: #555; /* Gris medio */
+  margin-bottom: 0.5rem; /* Espacio inferior */
+}
+
+/* Precio del producto */
+.item-price {
+  font-size: 1rem; /* Tamaño estándar */
+  color: green; /* Verde para resaltar */
+  font-weight: bold; /* Negrita */
+}
+
+/* Calificación y categoría del producto */
+.item-rating,
+.item-category {
+  font-size: 0.85rem; /* Tamaño pequeño */
+  color: #666; /* Gris claro */
+  margin-top: 0.2rem; /* Espacio superior pequeño */
+}
+
+/* Estilo para el contenedor de la barra de búsqueda */
+.search-bar {
+  border-radius: 5px; /* Bordes redondeados */
+  overflow: hidden; /* Oculta contenido que sobresale del borde */
+  margin-top: 0.5rem; /* Espaciado superior */
+}

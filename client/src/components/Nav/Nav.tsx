@@ -4,17 +4,31 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import "./Nav.css";
 
+/**
+ * Este componente `Nav` representa la estructura principal de navegación de la aplicación.
+ * Utiliza `Layout` de Ant Design para organizar un encabezado (Header), contenido (Content) y pie de página (Footer).
+ * También incluye un menú de navegación, un ícono de carrito con `Badge`, y un `Modal` que muestra el contenido del carrito.
+ *
+ * Funcionalidades principales:
+ * - Permite la navegación entre rutas como Inicio y Crear producto.
+ * - Muestra dinámicamente cuál ítem del menú está activo según la ruta.
+ * - Muestra un ícono de carrito con un contador (actualmente en cero).
+ * - Al hacer clic en el carrito, se abre un modal que indica que el carrito está vacío.
+ *
+ */
+
 const { Header, Footer, Content } = Layout;
 
 const Nav = () => {
-  const location = useLocation();
+  const location = useLocation(); // Para obtener la ruta actual
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const routeKeyMap: { [key: string]: string } = {
+    // Se mapean las rutas para el header
     "/": "1",
     "/create": "3",
   };
-  const selectedKey = routeKeyMap[location.pathname] || "1";
+  const selectedKey = routeKeyMap[location.pathname] || "1"; // Para activar el item segun la ruta en la que se está
 
   const menuItems = [
     {
@@ -27,7 +41,7 @@ const Nav = () => {
     },
   ];
 
-  const cartItemCount = 0;
+  const cartItemCount = 0; // valor que se mostrará en el badge del carrito
 
   const handleCartClick = () => {
     setIsModalOpen(true);

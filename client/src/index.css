@@ -1,60 +1,83 @@
+/**
+ * Estilos globales para la aplicación. Establece una tipografía y colores básicos,
+ * y también configura el estilo de los elementos interactivos.
+ */
+
+/* Estilos globales para el elemento raíz */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Definición de tipografía básica */
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; /* Se define una cadena de fuentes de sistema preferidas */
+  line-height: 1.5; /* Espaciado de línea estándar */
+  font-weight: 400; /* Peso de la fuente predeterminado */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Configuración del esquema de color */
+  color-scheme: light dark; /* Soporte para esquemas de color claro y oscuro */
+  color: rgba(255, 255, 255, 0.87); /* Color del texto en escala de grises con opacidad */
+  background-color: #242424; /* Color de fondo oscuro */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Configuraciones de tipografía y suavizado de fuentes */
+  font-synthesis: none; /* Deshabilita la síntesis de fuentes (no permite crear variaciones de fuentes) */
+  text-rendering: optimizeLegibility; /* Mejora la legibilidad de los textos */
+  -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para Webkit (navegadores como Safari) */
+  -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox en macOS */
 }
 
+/* Estilo para los enlaces */
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-weight: 500; /* Peso de fuente medio para los enlaces */
+  color: #646cff; /* Color inicial de los enlaces */
+  text-decoration: inherit; /* Elimina el subrayado por defecto de los enlaces */
 }
+
+/* Estilo para los enlaces cuando se pasa el cursor sobre ellos */
 a:hover {
-  color: #535bf2;
+  color: #535bf2; /* Cambia el color del enlace al pasar el ratón */
 }
 
+/* Estilo para los encabezados h1 */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3.2em; /* Tamaño grande para los encabezados h1 */
+  line-height: 1.1; /* Espaciado de línea más ajustado */
 }
 
+/* Estilos para los botones */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+  border-radius: 8px; /* Bordes redondeados en los botones */
+  border: 1px solid transparent; /* Borde inicial transparente */
   
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  font-size: 1em; /* Tamaño de fuente estándar para los botones */
+  font-weight: 500; /* Peso de la fuente del botón */
+  font-family: inherit; /* Hereda la tipografía del elemento contenedor */
+  background-color: #1a1a1a; /* Fondo oscuro para el botón */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: border-color 0.25s; /* Suaviza el cambio del borde al pasar el ratón */
 }
+
+/* Estilo para el botón al pasar el ratón sobre él */
 button:hover {
-  border-color: #646cff;
+  border-color: #646cff; /* Cambia el color del borde al pasar el ratón */
 }
+
+/* Estilo para el botón cuando recibe foco (clic o navegación con teclado) */
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto -webkit-focus-ring-color; /* Añade un borde de enfoque con un color predeterminado */
 }
 
+/* Estilos personalizados para cuando el sistema utiliza el esquema de colores claro */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #213547; /* Color del texto en modo claro */
+    background-color: #ffffff; /* Color de fondo blanco para el modo claro */
   }
+
+  /* Estilo para los enlaces cuando se pasa el ratón sobre ellos en modo claro */
   a:hover {
-    color: #747bff;
+    color: #747bff; /* Color más suave para los enlaces al pasar el ratón en modo claro */
   }
+
+  /* Estilo para los botones en modo claro */
   button {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Fondo más claro para los botones en el modo claro */
   }
 }

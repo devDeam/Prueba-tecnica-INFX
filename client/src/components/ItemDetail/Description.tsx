@@ -5,6 +5,15 @@ import { Item } from "../../types/item.d.tsx";
 import { formatPrice } from "../../utils/formatPrice.ts";
 import { calculateAverageRating } from "../../utils/calculateAverageRating.ts";
 
+/**
+ * Este componente `Description` muestra un resumen detallado de un producto utilizando el componente `Descriptions` de Ant Design.
+ * Incluye información como marca, nombre, precio, stock, categoría, estado de disponibilidad, descripción y calificación promedio.
+ * 
+ * @param {{ item: Item }} props - Objeto que contiene la información del producto.
+ * @param {Item} props.item - El producto que se va a mostrar en el resumen.
+ * 
+ */
+
 const Description = ({ item }: { item: Item }) => {
   const isOutOfStock = item.stock == 0; // para saber si el equipo está sin stock
   const rating = calculateAverageRating(item.rating) // la califacion actual del producto

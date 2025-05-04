@@ -1,3 +1,10 @@
+/**
+ * Modelo de "Item" para la base de datos MongoDB usando Mongoose.
+ * Este modelo define la estructura y los requisitos de los datos que se almacenarán en la colección "Items".
+ *
+ * @module Item
+ */
+
 const mongoose = require("mongoose");
 
 // Definición del esquema para el modelo de Item
@@ -40,10 +47,17 @@ const ItemSchema = mongoose.Schema(
     },
   },
   {
+    /**
+     * Activación de los timestamps (createdAt, updatedAt) automáticamente
+     * @type {Boolean}
+     */
     timestamps: true,
   }
 );
 
-// Se crea el modelo Item a partir del esquema definido
+/**
+ * El modelo "Item" representa un producto en la base de datos.
+ * Este modelo proporciona acceso a las operaciones CRUD (crear, leer, actualizar, eliminar) sobre la colección "items".
+ */
 const Item = mongoose.model("Item", ItemSchema);
-module.exports = Item;
+module.exports = Item; // Se exporta el modelo para poder usarlo en otros archivos.

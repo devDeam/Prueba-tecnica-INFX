@@ -1,5 +1,13 @@
-const express = require("express");
-const router = express.Router();
+/**
+ * Rutas relacionadas con los items en la API.
+ *
+ * Estas rutas manejan las operaciones CRUD (Crear, Leer) para los productos en la base de datos.
+ * Además, incluyen la funcionalidad para agregar calificaciones a los productos.
+ *
+ */
+
+const express = require("express"); // importa express para poder manejar rutas
+const router = express.Router(); // Crear un enrutador de Express
 const {
   createItem,
   getItemById,
@@ -7,7 +15,7 @@ const {
   postRating,
 } = require("../controllers/item.controller.js");
 
-// Se busca item por parametro ?query
+// Se buscan Items por el parametro de consulta 'q'
 router.get("/items", searchItem);
 
 //Se crea un nuevo Item en la DB
