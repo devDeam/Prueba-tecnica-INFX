@@ -17,18 +17,6 @@ const SearchBar = () => {
   const { Search } = Input;
 
   return (
-    /*<form onSubmit={handleSubmit} className="search-bar-container">
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Buscar producto..."
-        className="search-bar-input"
-      />
-      <button type="submit" className="search-bar-button">
-        Buscar
-      </button>
-    </form> */
 
     <Space direction = "vertical">
       <Search

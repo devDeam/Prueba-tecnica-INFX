@@ -1,7 +1,7 @@
-export interface BackButtonProps {
-    label: string;
-    style?: React.CSSProperties;
-  }
+import { ButtonProps } from "antd";
+export interface BackButtonProps extends ButtonProps {
+  label: string;
+}
 
 export interface FormButtonsProps {
     onClick: () => void;

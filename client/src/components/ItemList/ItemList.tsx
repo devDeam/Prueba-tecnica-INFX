@@ -3,36 +3,37 @@ import { useSearchParams } from "react-router-dom";
 import { Item } from "../../types/item.d.tsx";
 import "./ItemList.css";
 import SearchBar from "..//SearchBar/SearchBar.tsx";
-import BackButton from "../BackButton/BackButton.tsx";
 import ItemCard from "../ItemCard/ItemCard.tsx";
+import { calculateAverageRating } from "../../utils/calculateAverageRating.ts";
+import { Spin } from "antd";
+import NotFoundPage from "../../pages/NotFound.tsx";
 
 const ItemList = () => {
   const [searchParams] = useSearchParams(); // Obtiene los parámetros de búsqueda de la URL
   const query = searchParams.get("search") || ""; // Obtiene el valor del parámetro "search" o una cadena vacía si no existe
   const [items, setItems] = useState<Item[]>([]); // Estado para almacenar los items a crear
-  const [loading, setLoading] = useState(true); // Estado para manejar la carga
+  const [loading, setLoading] = useState<boolean>(true); // Estado para manejar la carga
   const [error, setError] = useState<string | null>(null); // Estado para manejar errores
 
-  // Calcular promedio calificaciones
-  const calculateAverageRating = (ratings: number[]) => {
-    if (ratings.length === 0) return 0;
-    const total = ratings.reduce((acc, rating) => acc + rating, 0);
-    const average = total / ratings.length;
-    return parseFloat(average.toFixed(1)); // redondea a 1 decimal (ej: 3.5)
-  };
-
+  // Efecto para buscar items al cargar el componente
   useEffect(() => {
     const fetchItems = async () => {
-      setLoading(true);
+      setItems([]) // Se limpia por si en allguna busque no hay resultados y se vuelve a consultar
       setError(null);
+      setLoading(true);
+
       try {
-        //const res = await fetch(`https://prueba-tecnica-infx.onrender.com/api/items?q=${query}`);
-        const res = await fetch(`http://localhost:3000/api/items?q=${query}`); // Cambia la URL a la de tu servidor local
-        if (!res.ok) {
-          const errData = await res.json();
-          throw new Error(errData.message || "Error al buscar");
-        }
-        const data = await res.json();
+        const fetchData = fetch(`${import.meta.env.VITE_API_URL}/items?q=${query}`).then(
+          async (res) => {
+            if (!res.ok) {
+              const errData = await res.json();
+              throw new Error(errData.message || "Error al buscar");
+            }
+            return res.json();
+          }
+        );
+
+        const [data] = await Promise.all([fetchData]); // Esperar la info mientras se muestra el spin
         setItems(data);
       } catch (err) {
         if (err instanceof Error) {
@@ -41,7 +42,7 @@ const ItemList = () => {
           setError("Error desconocido");
         }
       } finally {
-        setLoading(false);
+        setLoading(false); //  se oculta el spin del fetch
       }
     };
 
@@ -62,17 +63,20 @@ const ItemList = () => {
   return (
     <div className="search-results">
       <div>
-        <h2 className="title">Resultados para: "{query}"</h2>
+        <h1 className="title">Resultados para: "{query}"</h1>
         <SearchBar />
         <p className="result-count">Total resultados: {items.length}</p>
-        <BackButton label="Inicio" />
       </div>
-      {loading && <p className="loading">Cargando...</p>}
-      {error && <p className="error">Error: {error}</p>}
-      {!loading && !error && (
+
+      {loading ? (
+        <div style={{ textAlign: "center", marginTop: "100px" }}>
+          <Spin size="large" />
+        </div>
+      ) : error ? (
+        <NotFoundPage msg={error} btn={false}/>
+      ) : (
         <>
           {Object.entries(groupedByCategory).map(([category, items]) => (
-            // Agrupa los items por categoría
             <div key={category} className="category-group">
               <h3 className="category-title">{category}</h3>
               <div className="card-grid">

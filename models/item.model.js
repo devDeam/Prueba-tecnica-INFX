@@ -5,11 +5,11 @@ const ItemSchema = mongoose.Schema(
   {
     brand: {
       type: String,
-      required: true,
+      required: [true, "Ingrese la marca del producto"],
     },
     name: {
       type: String,
-      required: true,
+      required: [true, "Ingrese el nombre del producto"],
     },
     stock: {
       type: Number,
@@ -26,7 +26,7 @@ const ItemSchema = mongoose.Schema(
       default: 0,
     },
     imageUrl: {
-      type: [String],
+      type: String,
       required: false,
     },
     category: {

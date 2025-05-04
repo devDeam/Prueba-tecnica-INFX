@@ -12,9 +12,9 @@ const CreateItem = () => {
   const [show, setShow] = useState(false);
 
   const createItem = async (item: ItemPayload) => {
-    // Se envia la información al servidor
+    // Se hace la peticion tipo POST para crear el producto en la DB
     const response = await fetch(
-      "https://prueba-tecnica-infx.onrender.com/api/create",
+      `${import.meta.env.VITE_API_URL}/create`,
       {
         method: "POST",
         headers: {

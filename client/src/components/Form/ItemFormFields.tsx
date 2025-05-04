@@ -17,10 +17,10 @@ const ItemFormFields = () => (
       <InputNumber placeholder="Cantidad" style={{ width: '100%' }} />
     </Form.Item>
     <Form.Item name="description" label="Descripción">
-      <TextArea placeholder="Descripción del equipo" rows={5} />
+      <TextArea placeholder="Descripción del equipo" rows={4} />
     </Form.Item>
     <Form.Item name="category" label="Categoría">
-      <Select>
+      <Select placeholder="Selecciona una categoría">
         <Select.Option value="Computadores">Computadores</Select.Option>
         <Select.Option value="Celulares">Celulares</Select.Option>
         <Select.Option value="Tablets">Tablets</Select.Option>

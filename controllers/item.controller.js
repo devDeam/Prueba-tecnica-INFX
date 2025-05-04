@@ -48,37 +48,8 @@ const getItemById = async (req, res) => {
   }
 };
 
-// Controlador para enviar calififacion de un producto
-const postRating = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { rating } = req.body;
-
-    if( typeof rating !== "number" || rating < 0 || rating > 5){
-      return res.status(400).json({message: "La calificacion debe estar entre 0 y 5"});
-    }
-    // Buscar el producto por su ID
-    const item = await Item.findById(id);
-    if (!item){
-      return res.status(400).json({message:"No se encontró el producto"});
-    }
-    // Validar que el campo rating del modelo sea un array
-    if (!Array.isArray(item.rating)) {
-      item.rating = []
-    }
-
-    item.rating.push(rating); // se agrega la calificacion
-    await item.save();
-
-    res.status(200).json({message: "Calificacion enviada con exito!", item});
-  } catch (error) {
-    res.status(500).json({message: error.message});
-  }
-}
-
 module.exports = {
   createItem,
   getItemById,
   searchItem,
-  postRating,
 };

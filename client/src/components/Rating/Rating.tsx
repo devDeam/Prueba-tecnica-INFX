@@ -1,16 +1,88 @@
-import { Rate } from "antd";
+import { Rate, Modal } from "antd";
+import { useState } from "react";
+import Message from "../Message/Message";
 
 interface RatingProps {
-  rating: number;
+  rating?: number;
   readonly: boolean;
+  itemId?: string;
 }
-const Rating = ({ rating, readonly }: RatingProps) => {
+const Rating = ({ rating, readonly, itemId }: RatingProps) => {
+  const [newRate, setNewRate] = useState(0);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isMsgShow, setIsMsgShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<boolean | null>(null);
+  const [msg, setMsg] = useState("");
+
+  const handleRating = (value: number) => {
+    setNewRate(value);
+    setIsModalVisible(true);
+  };
+
+  const handleConfirm = async () => {
+    if (!itemId || newRate == null) return;
+    
+    try {
+      setLoading(true);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/items/${itemId}/rating`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({rating: rating})
+      });
+
+      if(!response.ok) {
+        setError(false)
+        setMsg("No se pudo enviar la calificación. ")
+      } else {
+        setError(true);
+        setMsg("Calificación enviada con éxito. ")
+      }
+      setIsMsgShow(true);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(false);
+      }
+    } finally {
+      setIsModalVisible(false);
+      setLoading(false);
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    setNewRate(0);
+  };
+
   return (
-    <div>
+    <div key={newRate}>
       {readonly ? (
         <Rate disabled allowHalf defaultValue={rating} />
       ) : (
-        <Rate allowHalf defaultValue={rating} />
+        <Rate allowHalf defaultValue={newRate} onChange={handleRating} />
+      )}
+
+      <Modal
+        title="Confirmar calificación"
+        open={isModalVisible}
+        onOk={handleConfirm}
+        onCancel={handleCancel}
+        okText="Enviar"
+        cancelText="Cancelar"
+        confirmLoading={loading}
+      >
+        <p>¿Deseas calificar este producto con {newRate} estrellas?</p>
+      </Modal>
+
+      {isMsgShow && (
+        <Message
+          content={msg}
+          state={error ? true : false}
+        />
       )}
     </div>
   );

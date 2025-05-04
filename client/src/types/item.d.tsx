@@ -3,9 +3,10 @@ export interface Item {
   name: string;
   description: string;
   price: number;
+  stock?: number;
   category: string;
   brand: string;
-  imageUrl: string;
+  imageUrl: string[];
   rating: number[];
 }
 
@@ -15,7 +16,7 @@ export interface ItemPayload {
   stock: number;
   description: string;
   price: number;
-  imageUrl: string;
+  imageUrl: string[];
   category: string;
   rating?: number[];
 }

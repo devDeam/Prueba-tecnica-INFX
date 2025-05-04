@@ -1,5 +1,5 @@
-import { message } from "antd";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
+import { message } from 'antd';
 
 interface MessageProps {
   content: string;
@@ -11,14 +11,23 @@ const Message = ({ content, state }: MessageProps) => {
   const hasShown = useRef(false);
 
   useEffect(() => {
-    if (hasShown.current) return; // Evita mostrarlo de nuevo
+    if (hasShown.current) return;
 
     hasShown.current = true;
 
-    messageApi.open({
-      type: state ? "success" : "error",
-      content,
-    });
+    messageApi
+      .open({
+        type: 'loading',
+        content: 'Procesando...',
+        duration: 1.5,
+      })
+      .then(() =>
+        messageApi.open({
+          type: state ? 'success' : 'error',
+          content,
+          duration: 2.5,
+        })
+      );
   }, [state, content, messageApi]);
 
   return <>{contextHolder}</>;
