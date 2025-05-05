@@ -79,9 +79,10 @@ Render es una plataforma gratuita para desplegar aplicaciones y/o servicios, sin
 
 ### Backend
 
-1. Clona el repositorio y cambiate a la carpeta del backend:
+1. Clona el repositorio:
    ```bash
-   cd server
+   git clone https://github.com/devDeam/Prueba-tecnica-INFX.git
+   cd Prueba-tecnica-INFX
    ```
    
 2. Ve a la carpeta del backend:
