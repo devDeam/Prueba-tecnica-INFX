@@ -11,7 +11,9 @@ Este repositorio contiene una **API REST** y un **frontend** para gestionar prod
 > 🟢 **Frontend**: https://mobilestore-smr.onrender.com/
 
 ## Recomendación :
-Render es una plataforma gratuita para desplegar aplicaciones y/o servicios, sin embargo, luego de 15min suspende el servicio web, por este motivo se recomienda primero ingresar a la URL para probar y activar el servicio web, luego ejecutar el Front.
+Render es una plataforma gratuita para desplegar aplicaciones y/o servicios, sin embargo
+luego de 15min suspende el servicio web, por este motivo se recomienda primero ingresar a la URL para probar y activar el servicio web,
+luego ejecutar el Front.
 
 ---
 ## 📁 Estructura del Proyecto (FRONTEND)
