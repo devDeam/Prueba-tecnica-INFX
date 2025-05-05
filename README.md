@@ -66,6 +66,9 @@ Este repositorio contiene una **API REST** y un **frontend** para gestionar prod
   ├── /routes │
     └── item.routes.js # Rutas del recurso "items" │
 
+   ├── /tests │
+    └── item.test.js # Pruebas unitarias │
+
   ├── index.js # Entrada principal del servidor │
 
 ├── .env # Variables de entorno (solo local) ├── package.json # Dependencias y scripts del proyecto
